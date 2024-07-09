@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
+    @top_5 = Movie.order("rating desc").limit(5)
   end
 
   def show
