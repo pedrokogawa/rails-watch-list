@@ -5,12 +5,21 @@
   </div>
 </div>
 
-<% @lists.each do |list| %>
-  <div class="d-flex align-items-center my-4">
-    <i class="fa-solid fa-list text-secondary mx-3"></i>
-    <div><%= link_to list.name, list_path(list), class: "text-light" %></div>
-  </div>
-<% end %>
+<div class="d-flex mb-3">
+  <% @lists.each do |list| %>
+    <%= link_to list_path(list), class: "text-light" do %>
+      <div class="d-flex m-2 p-1 border border-primary bg-dark">
+        <div class= "mw-100 mb-2" style="width: 180px; height: auto;">
+          <%= cl_image_tag(list.photo.key, width: 180, height: 200, crop: :fill) %>
+          <div class="d-flex align-items-center mt-1">
+            <i class="fa-solid fa-list text-secondary me-2"></i>
+            <div><span class="text-light"><%= list.name %></span></div>
+          </div>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
+</div>
 
 <div>
   <h4 class="text-light pb-2 border-bottom navbar-border">Top Ranked</h4>
